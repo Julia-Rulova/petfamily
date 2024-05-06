@@ -5,15 +5,38 @@ import {
   Image,
   Stack,
   Heading,
-  UnorderedList,
+  List,
   ListItem,
-  ButtonGroup,
   Button,
 } from "@chakra-ui/react";
 
 import { Icon } from "@iconify/react";
 
 function MainAnimal({ card }) {
+  const calculateAge = (date) => {
+    let today = new Date();
+    let birthDate = new Date(date);
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    return age;
+  };
+
+  const getNoun = (number, one, two, five) => {
+    let n = Math.abs(number);
+    n %= 100;
+    if (n >= 5 && n <= 20) {
+      return five;
+    }
+    n %= 10;
+    if (n === 1) {
+      return one;
+    }
+    if (n >= 2 && n <= 4) {
+      return two;
+    }
+    return five;
+  };
+
   return (
     <Card>
       <CardBody>
@@ -24,14 +47,105 @@ function MainAnimal({ card }) {
         />
 
         <Stack mt="6" spacing="3">
-          <Heading size="md">{card.name}</Heading>
+          <Heading size="md">
+            <span>{card.name}, </span>
+            <span className="font-normal">
+              {calculateAge(card.date)}{" "}
+              {getNoun(calculateAge(card.date), "год", "года", "лет")}
+            </span>
+          </Heading>
 
-          <UnorderedList className="text-sm">
-            <ListItem>Отношение к людям: хорошее</ListItem>
-            <ListItem>Отношение к животным: боится</ListItem>
-            <ListItem>Кастрирован</ListItem>
-            <ListItem>Вакцинирован</ListItem>
-          </UnorderedList>
+          <List className="text-sm">
+            <ListItem className="flex flex-row gap-2">
+              <Icon icon="ph:gender-intersex" width="20" height="20" />
+              <span>
+                <span className="underline decoration-primary font-semibold">
+                  Пол:
+                </span>{" "}
+                {card.sex === "male" ? "М" : "Ж"}
+              </span>
+            </ListItem>
+
+            <ListItem className="flex flex-row gap-2">
+              <Icon icon="solar:people-nearby-outline" width="20" height="20" />
+              <span>
+                <span className="underline decoration-primary font-semibold">
+                  Отношение к людям:
+                </span>{" "}
+                {card.people_rel}
+              </span>
+            </ListItem>
+
+            <ListItem className="flex flex-row gap-2">
+              <Icon
+                icon="fluent:animal-dog-16-regular"
+                width="20"
+                height="20"
+              />
+              <span>
+                <span className="underline decoration-primary font-semibold">
+                  Отношение к животным:
+                </span>{" "}
+                {card.animal_rel}
+              </span>
+            </ListItem>
+
+            <ListItem className="flex flex-row gap-2">
+              <Icon
+                icon="healthicons:surgical-sterilization"
+                width="20"
+                height="20"
+              />
+              <span className="flex flex-nowrap gap-1">
+                <span className="underline decoration-primary font-semibold">
+                  Кастрация/стерилизация:
+                </span>
+                {card.castration ? (
+                  <Icon
+                    icon="lets-icons:check-round-fill"
+                    width="21"
+                    height="21"
+                    style={{ color: "green" }}
+                  ></Icon>
+                ) : (
+                  <Icon
+                    icon="ion:close-circle"
+                    width="20"
+                    height="20"
+                    style={{ color: "red" }}
+                  ></Icon>
+                )}
+              </span>
+            </ListItem>
+
+            <ListItem className="flex flex-row gap-2">
+              <Icon
+                icon="material-symbols-light:syringe-outline"
+                width="20"
+                height="20"
+              />
+              <span className="flex flex-nowrap gap-1">
+                <span className="underline decoration-primary font-semibold">
+                  Вакцинация:{" "}
+                </span>
+                {card.vaccine ? (
+                  <Icon
+                    icon="lets-icons:check-round-fill"
+                    width="21"
+                    height="21"
+                    style={{ color: "green" }}
+                  ></Icon>
+                ) : (
+                  <Icon
+                    icon="ion:close-circle"
+                    width="20"
+                    height="20"
+                    style={{ color: "red" }}
+                  ></Icon>
+                )}
+              </span>
+            </ListItem>
+          </List>
         </Stack>
       </CardBody>
 
