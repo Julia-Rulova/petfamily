@@ -6,6 +6,9 @@
   :root {
     --color: #001a34;
 
+    --primary: #ff8484;
+    --primary-foreground: 0 0% 98%;
+
     --background: #fafafa;
     --foreground: 240 10% 3.9%;
 

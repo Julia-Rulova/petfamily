@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 
 function Header() {
   return (
-    <header className="w-full flex flex-row justify-between items-center px-4 py-3 bg-[#3182ce] shadow-xl ">
+    <header className="w-full flex flex-row justify-between items-center px-4 py-3 bg-red-400 shadow-xl ">
       <Icon
         className="cursor-pointer"
         icon="mdi:cat"

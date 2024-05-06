@@ -36,10 +36,10 @@ function MainAnimal({ card }) {
       </CardBody>
 
       <CardFooter className="gap-2">
-        <Button variant="solid" colorScheme="blue" className="flex-1">
+        <Button variant="solid" colorScheme="primary" className="flex-1">
           Подробнее
         </Button>
-        <Button variant="solid" colorScheme="blue">
+        <Button variant="solid" colorScheme="primary">
           <Icon
             className="cursor-pointer"
             icon="flowbite:star-outline"
