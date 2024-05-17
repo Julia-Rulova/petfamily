@@ -1,10 +1,26 @@
+import React from "react";
 import FilterAnimalsForm from "../components/FilterAnimalsForm";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import MainAnimal from "../components/cards/MainAnimal";
 
+import {
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerFooter,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
+
 function Main() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
+
   const cards = [
     {
       id: 0,
@@ -65,10 +81,41 @@ function Main() {
       <main className="flex-1 flex flex-row ">
         <Sidebar />
 
-        <section className="flex-1 px-5 py-6 flex flex-row gap-14">
-          <FilterAnimalsForm />
+        <section className="flex-1 px-5 py-6 flex flex-col items-end gap-4">
+          <Button
+            ref={btnRef}
+            colorScheme="primary"
+            onClick={onOpen}
+            className="w-fit"
+          >
+            Фильтры и сортировка
+          </Button>
 
-          <ul className="w-full grid grid-cols-4 gap-4">
+          <Drawer
+            isOpen={isOpen}
+            placement="left"
+            onClose={onClose}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Фильтры и сортировка</DrawerHeader>
+
+              <DrawerBody>
+                <FilterAnimalsForm />
+              </DrawerBody>
+
+              <DrawerFooter>
+                <Button variant="outline" mr={3} onClick={onClose}>
+                  Закрыть
+                </Button>
+                <Button colorScheme="primary">Применить</Button>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+
+          <ul className="w-full grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {cards.map((card) => (
               <li key={card.id}>
                 <MainAnimal card={card}></MainAnimal>
