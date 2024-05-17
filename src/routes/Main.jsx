@@ -1,3 +1,4 @@
+import FilterAnimalsForm from "../components/FilterAnimalsForm";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -65,9 +66,7 @@ function Main() {
         <Sidebar />
 
         <section className="flex-1 px-5 py-6 flex flex-row gap-14">
-          <div className="bg-white rounded-lg shadow-xl h-fit p-8">
-            <span>form</span>
-          </div>
+          <FilterAnimalsForm />
 
           <ul className="w-full grid grid-cols-4 gap-4">
             {cards.map((card) => (
