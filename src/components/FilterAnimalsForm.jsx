@@ -13,7 +13,9 @@ import {
 
 function FilterAnimalsForm() {
   return (
-    <form className=" flex flex-col gap-3">
+    <form className="h-fit flex flex-col gap-3 bg-white rounded-xl px-5 py-6 shadow-xl">
+      <h3 className="text-2xl font-semibold">Фильтры и сортировка</h3>
+
       <FormControl>
         <FormLabel>Вид</FormLabel>
 

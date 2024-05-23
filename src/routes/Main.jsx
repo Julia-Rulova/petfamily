@@ -5,22 +5,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import MainAnimal from "../components/cards/MainAnimal";
 
-import {
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerFooter,
-  Button,
-  useDisclosure,
-} from "@chakra-ui/react";
-
 function Main() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
-
   const cards = [
     {
       id: 0,
@@ -78,42 +63,11 @@ function Main() {
     <div className="min-h-screen w-full flex flex-col justify-between">
       <Header />
 
-      <main className="flex-1 flex flex-row ">
+      <main className="flex flex-col px-5 py-6 gap-4">
         <Sidebar />
 
-        <section className="flex-1 px-5 py-6 flex flex-col items-end gap-4">
-          <Button
-            ref={btnRef}
-            colorScheme="primary"
-            onClick={onOpen}
-            className="w-fit"
-          >
-            Фильтры и сортировка
-          </Button>
-
-          <Drawer
-            isOpen={isOpen}
-            placement="left"
-            onClose={onClose}
-            finalFocusRef={btnRef}
-          >
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader>Фильтры и сортировка</DrawerHeader>
-
-              <DrawerBody>
-                <FilterAnimalsForm />
-              </DrawerBody>
-
-              <DrawerFooter>
-                <Button variant="outline" mr={3} onClick={onClose}>
-                  Закрыть
-                </Button>
-                <Button colorScheme="primary">Применить</Button>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+        <section className="w-full flex flex-row gap-10">
+          <FilterAnimalsForm />
 
           <ul className="w-full grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {cards.map((card) => (
