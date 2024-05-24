@@ -69,7 +69,7 @@ function Main() {
         <section className="w-full flex flex-row gap-10">
           <FilterAnimalsForm />
 
-          <ul className="w-full grid gap-4 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+          <ul className="w-full grid gap-8 grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {cards.map((card) => (
               <li key={card.id}>
                 <MainAnimal card={card}></MainAnimal>

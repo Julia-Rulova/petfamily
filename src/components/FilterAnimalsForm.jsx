@@ -53,6 +53,15 @@ function FilterAnimalsForm() {
 
         <FormHelperText>округляется до годов</FormHelperText>
       </FormControl>
+
+      <FormControl>
+        <FormLabel>Порода</FormLabel>
+
+        <Select focusBorderColor="red.200">
+          <option value="one">Без породы</option>
+          <option value="two">Британская</option>
+        </Select>
+      </FormControl>
     </form>
   );
 }
