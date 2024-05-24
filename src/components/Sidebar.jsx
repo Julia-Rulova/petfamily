@@ -7,7 +7,7 @@ function Sidebar() {
         {menu.map((el, index) => (
           <li
             key={index}
-            className="flex-1 text-lg border-b text-gray-500 border-gray-300 text-center pb-3 hover:text-black hover:bg-gray-100 hover:border-primary transition ease-in-out duration-300"
+            className="flex-1 text-lg border-b text-gray-500 border-gray-300 text-center pb-3 cursor-pointer hover:text-black hover:bg-gray-100 hover:border-primary transition ease-in-out duration-300"
           >
             {el}
           </li>
